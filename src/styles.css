@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+app-root {
+  display: flex;
+  height: 100vh;
+  background: #20171F;
+  font-weight: bold;
+}
