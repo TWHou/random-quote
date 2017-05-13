@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Jsonp, Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
+
+import { Quote } from './quote';
 
 @Injectable()
 export class QuoteService {
-  private url: string = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=JSONP_CALLBACK';
-  constructor(private _jsonp: Jsonp) { }
+  private url: string = 'https://talaikis.com/api/quotes/';
+  constructor(private _http: Http) { }
   getQuote() {
-    return this._jsonp.get(this.url)
-      .map(response => <string[]> response.json());
+    return this._http.get(this.url)
+      .map(response => <Quote[]> response.json());
   }
 }

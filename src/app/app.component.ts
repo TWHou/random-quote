@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { QuoteService } from './quote.service';
 
+import { Quote } from './quote';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,9 +14,9 @@ export class AppComponent {
   constructor(private quoteService: QuoteService) { }
   getQuote(): void {
     this.quoteService.getQuote()
-      .subscribe(quote => {
-        this.quote = quote;
-        this.tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(`${quote.quoteText} -- ${quote.quoteAuthor}`);
+      .subscribe(quotes => {
+        this.quote = quotes[0];
+        this.tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(`${quotes[0].quote} -- ${quotes[0].author}`);
       });
   }
   ngOnInit(): void {
