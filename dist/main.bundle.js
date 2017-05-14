@@ -40833,9 +40833,9 @@ var AppComponent = (function () {
     AppComponent.prototype.getQuote = function () {
         var _this = this;
         this.quoteService.getQuote()
-            .subscribe(function (quotes) {
-            _this.quote = quotes[0];
-            _this.tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(quotes[0].quote + " -- " + quotes[0].author);
+            .subscribe(function (quote) {
+            _this.quote = quote;
+            _this.tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(quote.quote + " -- " + quote.author);
         });
     };
     AppComponent.prototype.ngOnInit = function () {
@@ -40879,7 +40879,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var QuoteService = (function () {
     function QuoteService(_http) {
         this._http = _http;
-        this.url = 'https://talaikis.com/api/quotes/';
+        this.url = 'https://random-quote-generator.herokuapp.com/api/quotes/random';
     }
     QuoteService.prototype.getQuote = function () {
         return this._http.get(this.url)
