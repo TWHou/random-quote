@@ -14,9 +14,9 @@ export class AppComponent {
   constructor(private quoteService: QuoteService) { }
   getQuote(): void {
     this.quoteService.getQuote()
-      .subscribe(quotes => {
-        this.quote = quotes[0];
-        this.tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(`${quotes[0].quote} -- ${quotes[0].author}`);
+      .subscribe(quote => {
+        this.quote = quote;
+        this.tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(`${quote.quote} -- ${quote.author}`);
       });
   }
   ngOnInit(): void {
